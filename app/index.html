@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Task timer</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="../node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="../vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .notification.is-success {
+            background-color: #257140;
+        }
+
+        .notification {
+            padding: 8px 20px;
+        }
+
+        .notification:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        .icon {
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+</head>
+<body>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Task Timer
+            </h1>
+            <h2 class="subtitle">
+                A simple app to keep track of the time spent on your tasks
+            </h2>
+        </div>
+    </div>
+</section>
+<div id="app" class="section">
+    <div class="container">
+        <p class="control has-addons">
+            <input type="text"
+                   class="input is-expanded"
+                   placeholder="Task name"
+                   v-model="taskName"
+                   @keyup.enter="newTask">
+            <button class="button" @click="newTask">New task</button>
+        </p>
+
+        <div class="box" v-if="orderedTasks.length">
+            <task v-for="task in orderedTasks" :task-id="task.id" :key="task.id"></task>
+        </div>
+
+        <!--<div class="box">-->
+            <!--<task v-for="task in orderedTasks" :task-id="task.id" :key="task.id"></task>-->
+        <!--</div>-->
+    </div>
+</div>
+
+<script>
+    require('./js/app.js');
+</script>
+</body>
+</html>

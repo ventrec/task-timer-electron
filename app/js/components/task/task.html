@@ -1,0 +1,37 @@
+<div class="notification" :class="{ 'is-success' : task.completed }">
+    <div class="columns is-mobile is-gapless">
+        <div class="column is-half">
+            <span>
+                {{ task.name }}
+            </span>
+        </div>
+        <div class="column">
+            {{ task.timer.seconds | hours | pad }} :
+            {{ task.timer.seconds | minutes | pad }} :
+            {{ task.timer.seconds | seconds | pad }}
+
+
+
+            <!--<span v-show="task.timer.seconds >= 3600">{{ task.timer.seconds | hours | pad }}h</span>-->
+            <!--<span v-show="task.timer.seconds >= 60">{{ task.timer.seconds | minutes | pad }}m</span>-->
+            <!--<span>{{ task.timer.seconds | seconds | pad }}s</span>-->
+        </div>
+        <div class="column">
+            <a @click="startTimer()" v-show="!task.timer.active && !task.completed">
+                <span class="icon">
+                    <i class="fa fa-play-circle"></i>
+                </span>
+            </a>
+            <a @click="stopTimer()" v-show="task.timer.active && !task.completed">
+                <span class="icon">
+                    <i class="fa fa-pause-circle"></i>
+                </span>
+            </a>
+            <a @click="completeTask()" v-show="!task.completed">
+                <span class="icon">
+                    <i class="fa fa-check-circle"></i>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
