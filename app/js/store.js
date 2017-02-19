@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Simple CSV reader',
+  title: 'Task Timer',
 
   // Used for creating tasks
   taskName: '',
@@ -7,6 +7,11 @@ module.exports = {
   file: {
     path: null
   },
+
+  dateFormat: 'YYYY-MM-DD HH:mm:ss',
+
+  // Id used for the power save blocker feature of electron
+  powerSaveBlockerId: null,
 
   tasks: [
     // {

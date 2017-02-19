@@ -47,12 +47,18 @@ module.exports = {
       this.task.timer.instance = window.setInterval(() => {
         this.task.timer.seconds += 1;
       }, 1000);
+
+      // Tell our parent that we started a timer in order to block power save
+      this.$emit('timerStarted');
     },
 
     stopTimer() {
       this.task.timer.active = false;
 
       window.clearInterval(this.task.timer.instance);
+
+      // Tell our parent that we stopped a timer in order to check if we can disable power save blocker
+      this.$emit('timerStopped');
     },
 
     completeTask() {
