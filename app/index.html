@@ -52,12 +52,12 @@
         </p>
 
         <div class="box" v-if="orderedTasks.length">
-            <task v-for="task in orderedTasks" :task-id="task.id" :key="task.id"></task>
+            <task v-for="task in orderedTasks"
+                  :task-id="task.id"
+                  :key="task.id"
+                  @timerStarted="handleTimerStarted"
+                  @timerStopped="handleTimerStopped"></task>
         </div>
-
-        <!--<div class="box">-->
-            <!--<task v-for="task in orderedTasks" :task-id="task.id" :key="task.id"></task>-->
-        <!--</div>-->
     </div>
 </div>
 

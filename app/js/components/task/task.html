@@ -1,4 +1,4 @@
-<div class="notification" :class="{ 'is-success' : task.completed }">
+<div class="notification" :class="{ 'is-success' : task.completed, 'is-info' : task.timer.active }">
     <div class="columns is-mobile is-gapless">
         <div class="column is-half">
             <span>
@@ -9,12 +9,6 @@
             {{ task.timer.seconds | hours | pad }} :
             {{ task.timer.seconds | minutes | pad }} :
             {{ task.timer.seconds | seconds | pad }}
-
-
-
-            <!--<span v-show="task.timer.seconds >= 3600">{{ task.timer.seconds | hours | pad }}h</span>-->
-            <!--<span v-show="task.timer.seconds >= 60">{{ task.timer.seconds | minutes | pad }}m</span>-->
-            <!--<span>{{ task.timer.seconds | seconds | pad }}s</span>-->
         </div>
         <div class="column">
             <a @click="startTimer()" v-show="!task.timer.active && !task.completed">
